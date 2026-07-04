@@ -66,11 +66,11 @@ function PricingCard({ pkg }) {
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-40 bg-surface hairline-border scroll-mt-20">
+    <section id="pricing" className="py-20 md:py-40 bg-surface hairline-border scroll-mt-20">
       <div className="px-margin-mobile md:px-gutter lg:px-margin-desktop max-w-container-max mx-auto">
         <FadeIn
           as="h2"
-          className="font-display text-headline-lg-mobile md:text-headline-lg text-center mb-24 uppercase tracking-widest text-on-surface"
+          className="font-display text-headline-lg-mobile md:text-headline-lg text-center mb-10 md:mb-24 uppercase tracking-widest text-on-surface"
         >
           CURATED PACKAGES
         </FadeIn>

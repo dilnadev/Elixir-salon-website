@@ -57,7 +57,7 @@ export default function Services() {
     <section className="py-24 space-y-32">
       <FadeIn
         as="h2"
-        className="font-display text-headline-lg-mobile md:text-headline-lg text-center mb-24 uppercase tracking-widest text-on-surface px-margin-mobile"
+        className="font-display text-headline-lg-mobile md:text-headline-lg text-center mb-10 md:mb-24 uppercase tracking-widest text-on-surface px-margin-mobile"
       >
         Our Services
       </FadeIn>

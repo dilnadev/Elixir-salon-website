@@ -38,7 +38,7 @@ export default function Gallery() {
       <div className="px-margin-mobile md:px-gutter lg:px-margin-desktop max-w-container-max mx-auto py-24">
         <FadeIn
           as="h2"
-          className="font-display text-headline-lg-mobile md:text-headline-lg text-center mb-24 uppercase tracking-widest text-on-surface"
+          className="font-display text-headline-lg-mobile md:text-headline-lg text-center mb-10 md:mb-24 uppercase tracking-widest text-on-surface"
         >
           Gallery
         </FadeIn>
