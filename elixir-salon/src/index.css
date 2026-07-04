@@ -1,0 +1,68 @@
+@import 'tailwindcss';
+@config '../tailwind.config.js';
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #f9f4ef;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0.09;
+  mix-blend-mode: multiply;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch' result='noise'/%3E%3CfeColorMatrix in='noise' type='matrix' values='0 0 0 0 0.62 0 0 0 0 0.47 0 0 0 0 0.15 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    repeating-linear-gradient(45deg, #513421 0px, #513421 1px, transparent 1px, transparent 4px),
+    repeating-linear-gradient(135deg, #513421 0px, #513421 1px, transparent 1px, transparent 4px);
+  background-size: 160px 160px, 6px 6px, 6px 6px;
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+.hairline-border {
+  border-bottom: 1px solid #d4c3bb;
+}
+.hairline-border-t {
+  border-top: 1px solid #d4c3bb;
+}
+
+@keyframes letter-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(0.4em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.letter-reveal {
+  display: inline-block;
+  opacity: 0;
+  animation: letter-reveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
