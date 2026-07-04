@@ -1,16 +1,20 @@
+import { useEffect, useRef, useState } from 'react'
 import { packages } from '../data'
 import FadeIn from './FadeIn'
 
-function PricingCard({ pkg }) {
+function PricingCard({ pkg, isRevealed, delay }) {
   const isHighlighted = pkg.highlighted
 
   return (
     <div
-      className={
+      style={{ transitionDelay: `${delay}ms` }}
+      className={`transition-all duration-700 ease-out hover:-translate-y-2 ${
+        isRevealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      } ${
         isHighlighted
           ? 'p-16 bg-primary text-on-primary flex flex-col relative z-10'
-          : 'p-16 border border-outline-variant bg-surface flex flex-col'
-      }
+          : 'p-16 border border-outline-variant bg-surface flex flex-col hover:border-primary'
+      }`}
     >
       {pkg.badge && (
         <div className="absolute top-0 right-0 bg-secondary-container text-on-secondary-container px-4 py-2 font-label-sm text-label-sm uppercase tracking-widest">
@@ -65,6 +69,26 @@ function PricingCard({ pkg }) {
 }
 
 export default function Pricing() {
+  const gridRef = useRef(null)
+  const [isRevealed, setIsRevealed] = useState(false)
+
+  useEffect(() => {
+    const el = gridRef.current
+    if (!el) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsRevealed(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.15 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section id="pricing" className="py-20 md:py-40 bg-surface hairline-border scroll-mt-20">
       <div className="px-margin-mobile md:px-gutter lg:px-margin-desktop max-w-container-max mx-auto">
@@ -74,9 +98,9 @@ export default function Pricing() {
         >
           CURATED PACKAGES
         </FadeIn>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
-          {packages.map((pkg) => (
-            <PricingCard key={pkg.name} pkg={pkg} />
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 gap-0">
+          {packages.map((pkg, i) => (
+            <PricingCard key={pkg.name} pkg={pkg} isRevealed={isRevealed} delay={i * 150} />
           ))}
         </div>
       </div>

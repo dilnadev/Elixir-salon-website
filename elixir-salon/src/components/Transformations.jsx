@@ -33,9 +33,11 @@ export default function Transformations() {
         >
           Transformations
         </FadeIn>
+      </div>
+      <div className="md:px-gutter lg:px-margin-desktop max-w-container-max mx-auto">
         <div
           ref={frameRef}
-          className="relative grid grid-cols-1 gap-0 aspect-[3/2] overflow-hidden border border-outline-variant"
+          className="relative grid grid-cols-1 gap-0 aspect-[3/2] overflow-hidden md:border md:border-outline-variant"
         >
           <Parallax className="w-full h-full">
             <div className="w-full h-full scale-125">
